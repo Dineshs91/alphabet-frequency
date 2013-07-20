@@ -2,7 +2,8 @@
 
 import sys
 import string
-import matplotlib
+import numpy as np
+import matplotlib.pyplot as plt
 
 frequency = {}
 
@@ -21,8 +22,22 @@ def main():
     for i in f.read():
         if i.lower() in frequency.keys():
             frequency[i.lower()] = frequency[i.lower()] + 1
-    print frequency,
     f.close()
+
+    # Code for plotting the data using matplotlib
+    N = 26
+    ind = np.arange(N)
+    width = 0.35
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    rects1 = ax.bar(ind+width, [frequency[i] for i in sorted(frequency.keys())], width, color='b')
+
+    ax.set_ylabel('Frequency')
+    ax.set_xlabel('Alphabets')
+    ax.set_title('Alphabet frequency')
+    ax.set_xticks(ind+width)
+    ax.set_xticklabels(sorted(frequency.keys()))
+    plt.show()
 
 if __name__ == "__main__":
     main()
