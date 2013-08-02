@@ -9,19 +9,34 @@ import argparse
 frequency = {}
 
 # Parsing command line arguments
-# Default is alphabets
+# Default is alphabets(lower and upper case)
 
-parser = argparse.ArgumentParser(description="Know the frequency of letter/numbers/symbols")
+parser = argparse.ArgumentParser(description="Know the frequency of Letters/Numbers/Symbols")
 parser.add_argument("filepath", help="path where the file is located along with filename")
+parser.add_argument("-u", action="store_true", help="Uppercase alphabets")
+parser.add_argument("-l", action="store_true", help="Lowercase alphabets")
 parser.add_argument("-n", action="store_true", help="Numbers")
-parser.add_argument("-p", action="store_true", help="Punctuation")
+parser.add_argument("-p", action="store_true", help="Punctuation(Symbols)")
+parser.add_argument("-a", action="store_true", help="Alphabets(upper and lower) Numbers and Punctuations")
 args = parser.parse_args()
-if args.n:
-    choice = string.digits
-elif args.s:
-    choice = string.punctuation
-else:
+if args.a:
+    choice = string.digits + string.letters + string.punctuation
+    xlabel = 'Alphabets Numbers Punctuation'
+elif args.u:
+    choice = string.uppercase
+    xlabel = 'Alphabets(upper)'
+elif args.l:
     choice = string.lowercase
+    xlabel = 'Alphabets(lower)'
+elif args.n:
+    choice = string.digits
+    xlabel = 'Numbers'
+elif args.p:
+    choice = string.punctuation
+    xlabel = 'Punctuation'
+else:  # Default choice
+    choice = string.letters
+    xlabel = 'Alphabets(lower and upper)'
 file = args.filepath
 
 def main():
@@ -34,8 +49,8 @@ def main():
     for j in choice:
         frequency[j] = 0
     for i in f.read():
-        if i.lower() in frequency.keys():
-            frequency[i.lower()] = frequency[i.lower()] + 1
+        if i in frequency.keys():
+            frequency[i] = frequency[i] + 1
     f.close()
 
     # Code for plotting the data using matplotlib
@@ -47,7 +62,7 @@ def main():
     rects1 = ax.bar(ind+width, [frequency[i] for i in sorted(frequency.keys())], width, color='b')
 
     ax.set_ylabel('Frequency')
-    ax.set_xlabel('Alphabets')
+    ax.set_xlabel(xlabel)
     ax.set_title('Alphabet frequency')
     ax.set_xticks(ind+width)
     ax.set_xticklabels(sorted(frequency.keys()))
