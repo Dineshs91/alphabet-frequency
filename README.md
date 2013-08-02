@@ -2,18 +2,23 @@ This program takes a file and plots a graph with the alphabets in x-axis and the
 The code is written in python 2. 
 
 
-Requirements:
-numpy
-Matplotlib -- To plot the bar graph.
-Python2.7
+Requirements:                                                                                            
+numpy.                                                                                      
+Matplotlib -- To plot the bar graph.                                                                   
+Python2.7                                                              
 
 
-Installing Dependencies:
-In ubuntu:                  
+Installing Dependencies:  
+The following packages are required    
+1. Numpy.                                                              
+2. Matplotlib.                                                                            
+                                                                                            
+In ubuntu:                                                                                             
 Numpy: $ sudo apt-get install python-numpy python-scipy            
-Matplotlib: $ sudo apt-get install python-matplotlib              
-Python: $ sudo apt-get install python            
+Matplotlib: $ sudo apt-get install python-matplotlib                         
 
+In osx:                                                                  
+Install the packages either from macports or homebrew. You can also install these packages manually from source.                        
 
 USAGE: python freq.py [args] [filename with exact path]             
 HELP: python freq.py -h                    
@@ -28,5 +33,5 @@ Arguments:
 -p  Punctuation(Symbols).             
 -a  Alphabets(upper and lower) Numbers and Punctuation.            
 
-If no argument is specified, the default alphabets(lower and upper case) is taken. 
+If no argument is specified, the default alphabets(lower and upper case) is taken.                                
 You cannot specify multiple arguments.                       
