@@ -17,7 +17,11 @@ Python: $ sudo apt-get install python
 USAGE: python freq.py -n -p [filename with exact path]
 HELP: python freq.py -h
 
-By default the program looks for alphabets. It also supports numbers and symbols
+By default the program looks for alphabets(Both lower and upper case). It also supports numbers and symbols
 
+-u  Only upper case letters
+-l  Only lower case letters
 -n  Numbers
 -p  Punctuation(Symbols)
+-a  Alphabets(upper and lower) Numbers and Punctuation
+
