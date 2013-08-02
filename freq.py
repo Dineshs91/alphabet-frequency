@@ -4,20 +4,34 @@ import sys
 import string
 import numpy as np
 import matplotlib.pyplot as plt
+import argparse
 
 frequency = {}
 
+# Parsing command line arguments
+# Default is alphabets
+
+parser = argparse.ArgumentParser(description="Know the frequency of letter/numbers/symbols")
+parser.add_argument("filepath", help="path where the file is located along with filename")
+parser.add_argument("-n", action="store_true", help="Numbers")
+parser.add_argument("-p", action="store_true", help="Punctuation")
+args = parser.parse_args()
+if args.n:
+    choice = string.digits
+elif args.s:
+    choice = string.punctuation
+else:
+    choice = string.lowercase
+file = args.filepath
+
 def main():
-    if len(sys.argv) != 2:
-        print 'usage: freq.py filepath'
-        return
     try:
-        f = open(sys.argv[1], 'r')
+        f = open(file, 'r')
     except IOError:
         print "file does'nt exist"
         return
 
-    for j in string.lowercase:
+    for j in choice:
         frequency[j] = 0
     for i in f.read():
         if i.lower() in frequency.keys():
@@ -25,7 +39,7 @@ def main():
     f.close()
 
     # Code for plotting the data using matplotlib
-    N = 26
+    N = len(choice)
     ind = np.arange(N)
     width = 0.35
     fig = plt.figure()
