@@ -14,4 +14,10 @@ Matplotlib: $ sudo apt-get install python-matplotlib
 
 Python: $ sudo apt-get install python
 
-USAGE: python freq.py [filename with exact path]
+USAGE: python freq.py -n -p [filename with exact path]
+HELP: python freq.py -h
+
+By default the program looks for alphabets. It also supports numbers and symbols
+
+-n  Numbers
+-p  Punctuation(Symbols)
