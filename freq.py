@@ -49,7 +49,7 @@ def main():
     for j in choice:
         frequency[j] = 0
     for i in f.read():
-        if i in frequency.keys():
+        if i in frequency:
             frequency[i] = frequency[i] + 1
     f.close()
 
